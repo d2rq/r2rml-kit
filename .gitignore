@@ -1,0 +1,9 @@
+# Maven stuff
+target
+
+# Eclipse stuff
+.project
+.classpath
+
+# OS X stuff
+.DS_Store

@@ -1,0 +1,204 @@
+@prefix : <http://d2rq.org/terms/test.ttl#>.
+@prefix map: <http://example.com/map#>.
+@prefix ex: <http://example.com/>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+# We use this to get the base URL in Jena.
+@prefix base: <>.
+
+<>
+    rdfs:label "An R2RML graph test suite"@en;
+    rdfs:comment """
+Test cases for an R2RML processor.
+    """@en.
+
+<mappings/no-p-o-maps.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>.
+
+<mappings/only-shortcut-iris.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p ex:o).
+
+<mappings/no-triple-for-empty-table.ttl> a :ProcessorTestCase;
+    :schema <schemas/empty-table1.sql>.
+
+<mappings/shortcut-literal.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p "o").
+
+<mappings/shortcut-literal-typed.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p 42).
+
+<mappings/shortcut-literal-language.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p "a"@en).
+
+<mappings/constant-subject.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p ex:o).
+
+<mappings/constant-predicate.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p ex:o).
+
+<mappings/constant-object.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p ex:o).
+
+<mappings/reuse-term-map.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:x ex:x ex:x).
+
+<mappings/two-p-o-maps.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p1 ex:o1), (ex:s ex:p2 ex:o2).
+
+<mappings/two-p-shortcuts.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p1 ex:o), (ex:s ex:p2 ex:o).
+
+<mappings/two-o-shortcuts.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p ex:o1), (ex:s ex:p ex:o2).
+
+<mappings/two-p-maps.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p1 ex:o), (ex:s ex:p2 ex:o).
+
+<mappings/two-o-maps.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p ex:o1), (ex:s ex:p ex:o2).
+
+<mappings/two-p-two-o-shortcuts.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple
+        (ex:s ex:p1 ex:o1), (ex:s ex:p1 ex:o2),
+        (ex:s ex:p2 ex:o1), (ex:s ex:p2 ex:o2).
+
+<mappings/class.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s rdf:type ex:C).
+
+<mappings/no-class-for-empty-table.ttl> a :ProcessorTestCase;
+    :schema <schemas/empty-table1.sql>.
+
+<mappings/two-classes.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s rdf:type ex:C1), (ex:s rdf:type ex:C2).
+
+<mappings/o-column-literal.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p 1).
+
+<mappings/null-no-triple.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1-null.sql>.
+
+<mappings/o-column-literal-typed-natural.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p 1).
+
+<mappings/o-column-literal-typed-string.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p "1"^^xsd:string).
+
+<mappings/o-column-literal-typed-custom.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p "1"^^ex:dt).
+
+<mappings/o-column-literal-language.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p "1"@en).
+
+<mappings/o-column-term-type-literal.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p 1).
+
+<mappings/o-column-term-type-iri.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p ex:1).
+
+<mappings/o-template-term-type-literal.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p "foo1").
+
+<mappings/o-template-iri.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p ex:foo1).
+
+<mappings/iri-column-relative.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1.sql>;
+    :triple (ex:s ex:p ex:1).
+
+<mappings/iri-column-absolute.ttl> a :ProcessorTestCase;
+    :schema <schemas/table1-iri.sql>;
+    :triple (ex:s ex:p <http://other.example.com/1>).
+
+<mappings/iri-template-relative.ttl> a :ProcessorTestCase;
+	:schema <schemas/table1.sql>;
+	:triple (ex:s ex:p <http://example.com/path/1>).
+
+<mappings/iri-template-absolute.ttl> a :ProcessorTestCase;
+	:schema <schemas/table1.sql>;
+	:triple (ex:s ex:p <http://notbase.example.com/1>).
+
+<mappings/ref-object-map-no-joins1.ttl> a :ProcessorTestCase;
+	:schema <schemas/table1.sql>;
+	:triple (ex:s ex:p ex:s).
+
+<mappings/ref-object-map-no-joins2.ttl> a :ProcessorTestCase;
+	:schema <schemas/table1.sql>;
+	:triple (ex:1 ex:p ex:1).
+
+<mappings/ref-object-map-join-different-table.ttl> a :ProcessorTestCase;
+    :schema <schemas/two-tables.sql>;
+    :triple (ex:s1 ex:p ex:o11).
+
+<mappings/ref-object-map-join-same-table.ttl> a :ProcessorTestCase;
+    :schema <schemas/same-table-ref.sql>;
+    :triple (ex:2 ex:p ex:1).
+
+<mappings/ref-object-map-two-joins.ttl> a :ProcessorTestCase;
+    :schema <schemas/two-tables-multicol.sql>;
+    :triple (ex:s1 ex:p ex:o10_1), (ex:s2 ex:p ex:o10_2), (ex:s3 ex:p ex:o11_1).
+
+<mappings/ref-object-map-join-same-view.ttl> a :ProcessorTestCase;
+    :schema <schemas/same-table-ref.sql>;
+    :triple (ex:2 ex:p ex:1).
+
+
+# TODO
+#
+# datatypes
+# overriding doesn't mess with lexical form
+# overriding with natural type means lexical form is still changed
+# do equal blank nodes link up? different term maps, triples maps?
+# do unequal blank nodes not link up? different term maps, triples maps?
+#
+# Simple tests for rr:sqlQuery
+# 
+# Column and table names, including quotes, escaping, case sensitivity, etc. 
+#
+# Data errors
+# - Produce an invalid IRI (containing a space character) by resolving relative string against base IRI, leading to a data error
+# - Produce invalid IRI with template
+# - Override datatype to produce ill-typed XSD literals
+#
+# Override integer 1 as xsd:boolean
+# Override integer 1 as xsd:string
+# Override string as xsd:string
+# Override integer 2 as xsd:boolean => data error
+# Override varbinary as string
+# Override varbinary as integer where it's ok
+# Override varbinary as integer where it's a data error
+# Use boolean in URI template
+# Use date in URI template
+# Use binary in URI template
+# Same blank node generated by two triples maps
+# Different blank nodes in different graphs
+# Computed predicate
+# Computed class
+# Graphs???
+# More for natural mapping???
