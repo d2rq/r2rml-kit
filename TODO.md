@@ -1,5 +1,3 @@
-# r2rml-kit TODO
-
 ## Before 0.1 release
 
 ### Tests
