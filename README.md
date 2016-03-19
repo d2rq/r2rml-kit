@@ -1,17 +1,18 @@
 # r2rml-kit – Export relational databases to RDF with R2RML
 
-r2rml-kit is an implementation of W3C's [R2RML](https://www.w3.org/TR/r2rml/) and [Direct Mapping](https://www.w3.org/TR/rdb-direct-mapping/) standards. It can:
+**r2rml-kit** is an implementation of W3C's [R2RML](https://www.w3.org/TR/r2rml/) and [Direct Mapping](https://www.w3.org/TR/rdb-direct-mapping/) standards. It can:
 
 - Generate an R2RML mapping by inspecting a relational database schema
 - Validate R2RML mapping files
 - Dump the contents of a database to an RDF file according to an R2RML mapping
 - Dump the contents of a database to an RDF file according to the W3C Direct Mapping
+- Access the contents of a database through the Jena API
 
-Besides R2RML, r2rml-kit also supports the [D2RQ mapping language](http://d2rq.org/d2rq-language).
+Besides R2RML, **r2rml-kit** also supports the [D2RQ mapping language](http://d2rq.org/d2rq-language).
 
-r2rml-kit is an offshoot of [D2RQ](http://d2rq.org/), based on its abandoned `develop` branch. Unlike D2RQ, it does not support SPARQL, and does not include a server application equivalent to D2RQ's D2R Server.
+**r2rml-kit** is an offshoot of [D2RQ](http://d2rq.org/), based on its abandoned `develop` branch. Unlike D2RQ, it does not support SPARQL, and does not include a server application equivalent to D2RQ's D2R Server.
 
-r2rml-kit is currently in pre-alpha stage. It is not yet fully separated from the D2RQ codebase, and many things will not yet work. It does not support R2RML's named graph features. See [`TODO.md`](https://github.com/d2rq/r2rml-kit/blob/master/TODO.md) for a short-term roadmap.
+**r2rml-kit** is currently in pre-alpha stage. It is not yet fully separated from the D2RQ codebase, and many things will not yet work. It does not support R2RML's named graph features. See [`TODO.md`](https://github.com/d2rq/r2rml-kit/blob/master/TODO.md) for a short-term roadmap.
 
 ## Running r2rml-kit
 
