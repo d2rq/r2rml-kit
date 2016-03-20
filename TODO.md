@@ -3,13 +3,22 @@
 ### Tests
 - Get all the tests to run in Eclipse and mvn test
 - Remove “WARN” log messages when running tests
-- Should our tests use the new JUnit annotation style?
-- Work out what to do with the MySQL datatype tests and MySQL functional tests; run them, but only if a suitable DB exists / is configured?
-- Are the Jena APIs (Graph, Model, Assembler) covered sufficiently by tests? Do they work as they should?
+- Change all old tests to the new JUnit annotation style
+- Make MySQL datatype tests use a properties file for connection information
+- Count MySQL datatype tests as skipped if connection not configured
+- Check if MySQL datatype tests can be sped up
+- Make MySQL functional_tests use a properties file for connection information
+- Count MySQL functional_tests as skipped if connection not configured
+- We used to have the beginnings of an Oracle test suite; what happened to that?
 
 ### Command line tools
 - Make command line tools work; make sure that results of mvn compile and Eclipse compile get picked up
 - Rename/modify the command line tools to better fit r2rml theme
+
+### Jena APIs
+- Cover GraphD2RQ with a solid set of unit tests
+- Cover ModelD2RQ with a solid set of unit tests
+- Cover Jena Assembler with a solid set of unit tests
 
 ### Codebase updates
 - Fix Eclipse warnings
