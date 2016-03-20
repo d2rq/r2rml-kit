@@ -35,6 +35,7 @@
 
 ### Build
 - Figure out how to package zip and tar files with Maven
+- Separate the CLI tools from the library, and have logging system and configuration only with the tools, so that library doesn't depend on an SLF4J binding
 - Ensure packaged archives contain only the jar, not the exploded classes
 - Ensure command line tools work after unzipping
 - Ensure the build produces a jar containing the tests, and it (plus any support files) ends up in the archive
