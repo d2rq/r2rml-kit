@@ -9,6 +9,8 @@
 - Check if MySQL datatype tests can be sped up
 - Make MySQL functional_tests use a properties file for connection information
 - Count MySQL functional_tests as skipped if connection not configured
+- Count skipped RDB2RDF tests as skipped
+- Review TODOs and comments in the test suite
 - We used to have the beginnings of an Oracle test suite; what happened to that?
 
 ### Command line tools
@@ -45,3 +47,4 @@
 - Review the test suite for stuff that should be made declarative (e.g., datatype tests)
 - Review codebase for stuff that should be made declarative (e.g., Vendor stuff)
 - Pass complete R2RML and Direct Mapping test suites, including Named Graphs support
+- Make Jena API use connection pooling
